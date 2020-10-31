@@ -13,9 +13,6 @@ class Contact(models.Model):
         ('h','HIGHRADIUS'),
     )
     co_name = models.CharField(max_length=20,choices=COMPANY_NAME,default='NA')
-    def __contact__(self):
-        return self.co_name
-class Personal_Information(models.Model):
     name = models.CharField(max_length=30)
     SALUTATION = (
         ('n','NA'),
@@ -59,27 +56,46 @@ class Personal_Information(models.Model):
         ('p','Purchase'),
             )
     department = models.CharField(max_length=20,choices=DEPARTMENT,default='NA')
-    designation = models.CharField(max_length=100)
     email = models.EmailField(max_length=70)
     mob_no = models.CharField(max_length=20)
-    remarks = models.TextField(max_length=150)
-
-    def __personalinformation__(self):
-        return self.name
-class Pedigree(models.Model):
-    COLLEGE_CHOICES = [
+    direct_no = models.CharField(max_length=20)
+    notes = models.TextField()
+    INSTITUTIONS = [
         ('K','KIIT'),
         ('O','Others'),
     ]
-    address1 = forms.ChoiceField(choices=COLLEGE_CHOICES,widget=forms.RadioSelect)
+    institution = forms.ChoiceField(choices=INSTITUTIONS,widget=forms.RadioSelect)
+    SCHOOL = (
+        ('n','NA'),
+        ('s1','School_1'),
+        ('s2','School_2'),
+        ('s3','School_3'),
+    )
+    school = models.CharField(max_length=20,choices=SCHOOL,default='NA')
+    STREAM = (
+        ('n','NA'),
+        ('s1','STREAM_1'),
+        ('s2','STREAM_2'),
+        ('s3','STREAM_3'),
+    )
+    school = models.CharField(max_length=20,choices=STREAM,default='NA')
     y_of_p = models.CharField(max_length=10)
     degree = models.CharField(max_length=50)
-    Working_Since = models.DateField()
-class Social_media_link(models.Model):
+    MONTH = (
+        ('n','NA'),
+        ('j1','JANUARY'),
+        ('j2','FEBRUARY'),
+    )
+    month = models.CharField(max_length=20,choices=MONTH,default='NA')
+    YEAR = (
+        ('n','NA'),
+        ('j1','2001'),
+        ('j2','2002'),
+    )
+    year = models.CharField(max_length=20,choices=YEAR,default='NA')
     Linkedin = models.CharField(max_length=30)
     Facebook = models.CharField(max_length=30)
     Twitter = models.CharField(max_length=30)
-class Office_Detail(models.Model):
     OFFICE_DETAILS = (
         ('n','NA'),
         ('hd','Head office'),
@@ -95,12 +111,10 @@ class Office_Detail(models.Model):
     Address = models.TextField(max_length=200)
     Country = models.CharField(max_length=20)
     City = models.CharField(max_length=15)
-    RECRUITMENT_CHOICES = [('','')]
+    RECRUITMENT_CHOICES = [('KIIT','OTHERS')]
     address2 = forms.ChoiceField(choices=RECRUITMENT_CHOICES,widget=forms.RadioSelect)
 
     def __Officedetail__(self):
-        return self.Of_details
-
-
+        return self.name
 
 
